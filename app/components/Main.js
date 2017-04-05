@@ -23,15 +23,15 @@ class Main extends Component {
             />
         )
     }
-    
+
     drawHandler(touchEvent) {
         if (touchEvent.status === TOUCHES_BEGAN) {
-            
-        }
-        else if (touchEvent.status === TOUCHES_MOVED) { 
 
         }
-        else if (touchEvent.status === TOUCHES_ENDED) { 
+        else if (touchEvent.status === TOUCHES_MOVED) {
+
+        }
+        else if (touchEvent.status === TOUCHES_ENDED) {
 
         }
     }
