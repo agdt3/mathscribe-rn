@@ -1,0 +1,3 @@
+rootProject.name = 'mathscribe'
+
+include ':app'
