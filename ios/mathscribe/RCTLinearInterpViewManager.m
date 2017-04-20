@@ -11,17 +11,13 @@
 #import <React/RCTComponent.h>
 #import "LinearInterpView.h"
 
-@interface RCTLinearInterpViewManager : RCTViewManager <LinearInterpViewProtocol>
+@interface RCTLinearInterpViewManager : RCTViewManager
 @property (atomic, strong) LinearInterpView* _view;
 @end
 
 @implementation RCTLinearInterpViewManager
 
 RCT_EXPORT_MODULE()
-
-RCT_EXPORT_VIEW_PROPERTY(backgroundColor, UIColor);
-RCT_EXPORT_VIEW_PROPERTY(opaque, BOOL);
-RCT_EXPORT_VIEW_PROPERTY(onChange, RCTBubblingEventBlock);
 
 - (UIView *)view {
   if (!self._view) {
@@ -33,6 +29,13 @@ RCT_EXPORT_VIEW_PROPERTY(onChange, RCTBubblingEventBlock);
   return self._view;
 }
 
+RCT_EXPORT_VIEW_PROPERTY(backgroundColor, UIColor);
+RCT_EXPORT_VIEW_PROPERTY(opaque, BOOL);
+RCT_EXPORT_VIEW_PROPERTY(onChange, RCTBubblingEventBlock);
+RCT_EXPORT_VIEW_PROPERTY(lineWidth, float); // Defined via getters and setters on view
+RCT_EXPORT_VIEW_PROPERTY(lineColor, UIColor);
+
+// Not actually defined on view class
 RCT_CUSTOM_VIEW_PROPERTY(loadedPaths, NSArray, LinearInterpView)
 {
   // json is already an NSArray*

@@ -14,12 +14,12 @@
 
 #import <UIKit/UIKit.h>
 #import <React/RCTComponent.h>
-#import "LinearInterpViewProtocol.h"
 
 @interface LinearInterpView : UIView
 
-@property (nonatomic, weak) id <LinearInterpViewProtocol> delegate;
 @property (nonatomic, copy) RCTBubblingEventBlock onChange;
+@property (nonatomic, strong) UIColor *lineColor;
+@property (nonatomic) float lineWidth;
 
 - (void) loadPaths:(NSArray*) paths;
 

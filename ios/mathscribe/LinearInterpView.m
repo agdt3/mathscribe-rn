@@ -10,6 +10,8 @@
 
 #import "LinearInterpView.h"
 
+
+
 @implementation LinearInterpView
 {
   UIBezierPath *path;
@@ -19,17 +21,19 @@
 {
   NSLog(@"%@", @"initWithFrame");
   if (self = [super initWithFrame:frame]) {
+    [self setLineWidth:2.0];
+    [self setLineColor:[UIColor blackColor]];
     [self setMultipleTouchEnabled:NO];
     [self setBackgroundColor:[UIColor greenColor]];
     path = [UIBezierPath bezierPath];
-    [path setLineWidth:2.0];
+    [path setLineWidth: [self lineWidth]];
   }
   return self;
 }
 
 - (void)drawRect:(CGRect)rect
 {
-  [[UIColor blackColor] setStroke];
+  [[self lineColor] setStroke];
   [path stroke];
 }
 
@@ -78,9 +82,6 @@
                       }});
   
   [self setNeedsDisplay];
-  //[self touchesMoved:touches withEvent:event];
-  
-  
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -88,9 +89,11 @@
   [self touchesEnded:touches withEvent:event];
 }
 
-- (void)loadPaths:(NSArray*)paths {
+- (void)loadPaths:(NSArray*)paths
+{
   BOOL isNewPath;
   NSUInteger length;
+  
   for (id subpath in paths) {
     isNewPath = YES;
     if ([subpath isKindOfClass:[NSArray class]]) {
@@ -116,6 +119,12 @@
     }
   }
   [self setNeedsDisplay];
+}
+
+-(void) setLineWidth:(float)lineWidth
+{
+  _lineWidth = lineWidth;
+  [path setLineWidth:lineWidth];
 }
 
 @end
